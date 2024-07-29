@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test'
 
 export default defineConfig({
   projects: [
@@ -18,4 +18,4 @@ export default defineConfig({
     viewport: { width: 1280, height: 720 },
     actionTimeout: 30000,
   },
-});
+})

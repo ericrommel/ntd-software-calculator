@@ -1,0 +1,13 @@
+bin
+docs
+lib
+node_modules
+reports
+report
+tmp
+.github
+
+CHANGELOG.md
+CONTRIBUTING.md
+README.md
+UPGRADING.md

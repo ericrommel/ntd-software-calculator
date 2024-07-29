@@ -7,6 +7,7 @@ import { spawn } from 'child_process'
  * @param args - The arguments for the operation.
  * @returns The result of the operation.
  */
+
 export async function runCalculator(operation: string, ...args: any[]): Promise<string> {
   return new Promise((resolve, reject) => {
     const command = `public.ecr.aws/l4q9w4c5/loanpro-calculator-cli`
@@ -23,6 +24,7 @@ export async function runCalculator(operation: string, ...args: any[]): Promise<
       result += data.toString()
     })
 
+    // eslint-disable-next-line
     docker.on('close', (code) => {
       resolve(result.trim())
     })
@@ -38,7 +40,7 @@ export async function runCalculator(operation: string, ...args: any[]): Promise<
  * @param actualResult - The actual result from the calculator.
  * @param expectedResult - The expected numerical result.
  */
-export function expectResult(actualResult: any, expectedResult: any) {
+export function expectResult(actualResult: string | number, expectedResult: string | number) {
   if (expectedResult === Infinity) {
     expect(actualResult).toMatch(/^(Result: )?(Infinity|∞)$/)
   } else {

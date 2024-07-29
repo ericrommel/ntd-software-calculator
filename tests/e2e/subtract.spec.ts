@@ -14,14 +14,40 @@ const testCases = [
   { id: 'TC-SUB-007', description: 'Both operadans equals to zero', minuend: 0, subtrahend: 0, expected: 0 - 0 },
 
   // Edge Cases
-  { id: 'TC-SUB-101', description: 'Minuend as a number and subtrahend as a string number', minuend: 10, subtrahend: '20', expected: 10 - Number('20') },
-  { id: 'TC-SUB-102', description: 'Minuend as a string number and subtrahend as a number', minuend: '10', subtrahend: 20, expected: Number('10') - 20 },
+  {
+    id: 'TC-SUB-101',
+    description: 'Minuend as a number and subtrahend as a string number',
+    minuend: 10,
+    subtrahend: '20',
+    expected: 10 - Number('20'),
+  },
+  {
+    id: 'TC-SUB-102',
+    description: 'Minuend as a string number and subtrahend as a number',
+    minuend: '10',
+    subtrahend: 20,
+    expected: Number('10') - 20,
+  },
   { id: 'TC-SUB-103', description: 'Both operands as string numbers', minuend: '10', subtrahend: '20', expected: Number('10') - Number('20') },
-  { id: 'TC-SUB-104', description: 'Minuend as a very large and subtrahend as a very small', minuend: 1e+100, subtrahend: 1e-100, expected: 1e+100 - 1e-100, skip: true },
-  { id: 'TC-SUB-105', description: 'Minuend as a very small and subtrahend as a very large', minuend: 1e-100, subtrahend: 1e+100, expected: 1e-100 - 1e+100, skip: true },
-  { id: 'TC-SUB-106', description: 'Both operands as very large numbers', minuend: 1e+100, subtrahend: 1e+100, expected: 1e+100 - 1e+100 },
+  {
+    id: 'TC-SUB-104',
+    description: 'Minuend as a very large and subtrahend as a very small',
+    minuend: 1e100,
+    subtrahend: 1e-100,
+    expected: 1e100 - 1e-100,
+    skip: true,
+  },
+  {
+    id: 'TC-SUB-105',
+    description: 'Minuend as a very small and subtrahend as a very large',
+    minuend: 1e-100,
+    subtrahend: 1e100,
+    expected: 1e-100 - 1e100,
+    skip: true,
+  },
+  { id: 'TC-SUB-106', description: 'Both operands as very large numbers', minuend: 1e100, subtrahend: 1e100, expected: 1e100 - 1e100 },
   { id: 'TC-SUB-107', description: 'Both operands as very small numbers', minuend: 1e-100, subtrahend: 1e-100, expected: 1e-100 - 1e-100 },
-  
+
   // Error Handling
   { id: 'TC-SUB-201', description: 'Minuend as empty strings', minuend: '', subtrahend: 20, expected: invalidArgumentMessage },
   { id: 'TC-SUB-202', description: 'Subtrahend as empty strings', minuend: 10, subtrahend: '', expected: invalidArgumentMessage },
@@ -40,21 +66,89 @@ const testCases = [
   { id: 'TC-SUB-215', description: 'Minuend as a boolean (false)', minuend: false, subtrahend: 20, expected: invalidArgumentMessage },
   { id: 'TC-SUB-216', description: 'Subtrahend as a boolean (true)', minuend: 10, subtrahend: true, expected: invalidArgumentMessage },
   { id: 'TC-SUB-217', description: 'Subtrahend as a boolean (false)', minuend: 10, subtrahend: false, expected: invalidArgumentMessage },
-  { id: 'TC-SUB-218', description: 'Minuend as a boolean (true) and second as a boolean (false)', minuend: true, subtrahend: false, expected: invalidArgumentMessage },
-  { id: 'TC-SUB-219', description: 'Minuend as a boolean (false) and second as a boolean (true)', minuend: false, subtrahend: true, expected: invalidArgumentMessage },
+  {
+    id: 'TC-SUB-218',
+    description: 'Minuend as a boolean (true) and second as a boolean (false)',
+    minuend: true,
+    subtrahend: false,
+    expected: invalidArgumentMessage,
+  },
+  {
+    id: 'TC-SUB-219',
+    description: 'Minuend as a boolean (false) and second as a boolean (true)',
+    minuend: false,
+    subtrahend: true,
+    expected: invalidArgumentMessage,
+  },
   { id: 'TC-SUB-220', description: 'Both operands as booleans (true)', minuend: true, subtrahend: true, expected: invalidArgumentMessage },
   { id: 'TC-SUB-221', description: 'Both operands as booleans (false)', minuend: false, subtrahend: false, expected: invalidArgumentMessage },
 
   // Special Cases
-  { id: 'TC-SUB-301', description: 'Minuend as the maximum safe integer', minuend: Number.MAX_SAFE_INTEGER, subtrahend: 10, expected: Number.MAX_SAFE_INTEGER - 10 },
-  { id: 'TC-SUB-302', description: 'Subtrahend as the maximum safe integer', minuend: 20, subtrahend: Number.MAX_SAFE_INTEGER, expected: 20 - Number.MAX_SAFE_INTEGER },
-  { id: 'TC-SUB-303', description: 'Both operands as the maximum safe integer', minuend: Number.MAX_SAFE_INTEGER, subtrahend: Number.MAX_SAFE_INTEGER, expected: Number.MAX_SAFE_INTEGER - Number.MAX_SAFE_INTEGER },
-  { id: 'TC-SUB-304', description: 'Minuend as the minimum safe integer', minuend: Number.MIN_SAFE_INTEGER, subtrahend: 10, expected: Number.MIN_SAFE_INTEGER - 10 },
-  { id: 'TC-SUB-305', description: 'Subtrahend as the minimum safe integer', minuend: 20, subtrahend: Number.MIN_SAFE_INTEGER, expected: 20 - Number.MIN_SAFE_INTEGER },
-  { id: 'TC-SUB-306', description: 'Both operands as the minimum safe integer', minuend: Number.MIN_SAFE_INTEGER, subtrahend: Number.MIN_SAFE_INTEGER, expected: Number.MIN_SAFE_INTEGER - Number.MIN_SAFE_INTEGER },
-  { id: 'TC-SUB-307', description: 'Minuend as the maximum value', minuend: Number.MAX_VALUE, subtrahend: 10, expected: Number.MAX_VALUE - 10, skip: true },
-  { id: 'TC-SUB-308', description: 'Subtrahend as the maximum value', minuend: 20, subtrahend: Number.MAX_VALUE, expected: 20 - Number.MAX_VALUE, skip: true },
-  { id: 'TC-SUB-309', description: 'Both operands as the maximum value', minuend: Number.MAX_VALUE, subtrahend: Number.MAX_VALUE, expected: Number.MAX_VALUE - Number.MAX_VALUE },
+  {
+    id: 'TC-SUB-301',
+    description: 'Minuend as the maximum safe integer',
+    minuend: Number.MAX_SAFE_INTEGER,
+    subtrahend: 10,
+    expected: Number.MAX_SAFE_INTEGER - 10,
+  },
+  {
+    id: 'TC-SUB-302',
+    description: 'Subtrahend as the maximum safe integer',
+    minuend: 20,
+    subtrahend: Number.MAX_SAFE_INTEGER,
+    expected: 20 - Number.MAX_SAFE_INTEGER,
+  },
+  {
+    id: 'TC-SUB-303',
+    description: 'Both operands as the maximum safe integer',
+    minuend: Number.MAX_SAFE_INTEGER,
+    subtrahend: Number.MAX_SAFE_INTEGER,
+    expected: Number.MAX_SAFE_INTEGER - Number.MAX_SAFE_INTEGER,
+  },
+  {
+    id: 'TC-SUB-304',
+    description: 'Minuend as the minimum safe integer',
+    minuend: Number.MIN_SAFE_INTEGER,
+    subtrahend: 10,
+    expected: Number.MIN_SAFE_INTEGER - 10,
+  },
+  {
+    id: 'TC-SUB-305',
+    description: 'Subtrahend as the minimum safe integer',
+    minuend: 20,
+    subtrahend: Number.MIN_SAFE_INTEGER,
+    expected: 20 - Number.MIN_SAFE_INTEGER,
+  },
+  {
+    id: 'TC-SUB-306',
+    description: 'Both operands as the minimum safe integer',
+    minuend: Number.MIN_SAFE_INTEGER,
+    subtrahend: Number.MIN_SAFE_INTEGER,
+    expected: Number.MIN_SAFE_INTEGER - Number.MIN_SAFE_INTEGER,
+  },
+  {
+    id: 'TC-SUB-307',
+    description: 'Minuend as the maximum value',
+    minuend: Number.MAX_VALUE,
+    subtrahend: 10,
+    expected: Number.MAX_VALUE - 10,
+    skip: true,
+  },
+  {
+    id: 'TC-SUB-308',
+    description: 'Subtrahend as the maximum value',
+    minuend: 20,
+    subtrahend: Number.MAX_VALUE,
+    expected: 20 - Number.MAX_VALUE,
+    skip: true,
+  },
+  {
+    id: 'TC-SUB-309',
+    description: 'Both operands as the maximum value',
+    minuend: Number.MAX_VALUE,
+    subtrahend: Number.MAX_VALUE,
+    expected: Number.MAX_VALUE - Number.MAX_VALUE,
+  },
   { id: 'TC-SUB-310', description: 'Minuend as a float number', minuend: 123.456, subtrahend: 10, expected: 123.456 - 10 },
   { id: 'TC-SUB-311', description: 'Subtrahend as a float number', minuend: 20, subtrahend: 123.456, expected: 20 - 123.456 },
   { id: 'TC-SUB-312', description: 'Both operands as float numbers', minuend: 123.456, subtrahend: 654.321, expected: 123.456 - 654.321 },
@@ -80,9 +174,3 @@ test.describe('Subtraction', () => {
     })
   }
 })
-
-
-
-// Failing: Known bug - Precision limit (8 decimal places) and/or rounding cases
-//   - Expected: "Result: 2e-100"
-//   - Received: "Result: 0"
