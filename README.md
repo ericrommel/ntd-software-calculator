@@ -88,6 +88,7 @@ Additionally, as part of the testing process, comprehensive test strategy, test 
 
 
 #### Playwright/TypeScript
+
 Utilized for writing and executing automated tests. Playwright provides a reliable and fast framework for automation, and TypeScript adds type safety, making the codebase more maintainable.
 
 
@@ -107,8 +108,7 @@ While Playwright is primarily designed for browser automation, I used it in this
    - Its built-in support for capturing screenshots, handling asynchronous operations, and generating detailed test reports proved beneficial in this context.
 
 3. Integration and Scalability:
-   - Playwright integrates well with other tools and services we use, such as Docker, allowing us to containerize the application and ensure consistent test environments.
-   - The framework's scalability features facilitated parallel test execution, improving efficiency and reducing test run times.
+
 
 #### Considerations and Alternatives
 
