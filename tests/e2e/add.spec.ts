@@ -192,7 +192,6 @@ const testCases = [
  *   - TC-ADD-310: Expected: "Result: 133.45600000000002", Received: "Result: 133.456"
  *   - TC-ADD-311: Expected: "Result: 143.45600000000002", Received: "Result: 143.456"
  *   - TC-ADD-312: Expected: "Result: 777.777", Received: "Result: 794.777"
-
  */
 test.describe('Addition', () => {
   for (const { id, description, first_addend, second_addend, expected, skip } of testCases) {

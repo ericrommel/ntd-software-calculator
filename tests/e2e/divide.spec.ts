@@ -6,11 +6,11 @@ const invalidArgumentMessage = 'Invalid argument. Must be a numeric value.'
 
 const testCases = [
   // Basic Operations
-  { id: 'TC-ADD-001', description: 'Both positive numbers', dividend: 8, divisor: 4, expected: 8 / 4 },
-  { id: 'TC-ADD-002', description: 'Both negative numbers', dividend: -8, divisor: -4, expected: -8 / -4 },
-  { id: 'TC-ADD-003', description: 'Negative dividend and positive divisor', dividend: -8, divisor: 4, expected: -8 / 4 },
-  { id: 'TC-ADD-004', description: 'Positive dividend and negative divisor', dividend: 8, divisor: -4, expected: 8 / -4 },
-  { id: 'TC-ADD-005', description: 'Dividend equals to zero', dividend: 0, divisor: 4, expected: 0 / 4 },
+  { id: 'TC-DIV-001', description: 'Both positive numbers', dividend: 8, divisor: 4, expected: 8 / 4 },
+  { id: 'TC-DIV-002', description: 'Both negative numbers', dividend: -8, divisor: -4, expected: -8 / -4 },
+  { id: 'TC-DIV-003', description: 'Negative dividend and positive divisor', dividend: -8, divisor: 4, expected: -8 / 4 },
+  { id: 'TC-DIV-004', description: 'Positive dividend and negative divisor', dividend: 8, divisor: -4, expected: 8 / -4 },
+  { id: 'TC-DIV-005', description: 'Dividend equals to zero', dividend: 0, divisor: 4, expected: 0 / 4 },
 
   // Edge Cases
   {
@@ -97,10 +97,10 @@ const testCases = [
   },
   { id: 'TC-DIV-314', description: 'Both use same integer numbers', dividend: 50, divisor: 50, expected: 50 / 50 },
   { id: 'TC-DIV-315', description: 'Both use same float numbers', dividend: 123.456, divisor: 123.456, expected: 123.456 / 123.456 },
-  { id: 'TC-MUL-316', description: 'Dividing by infinity', dividend: 20, divisor: Infinity, expected: 20 * Infinity, skip: true },
-  { id: 'TC-MUL-317', description: 'Dividing zero by infinity', dividend: 0, divisor: Infinity, expected: 0 * Infinity, skip: true },
+  { id: 'TC-DIV-316', description: 'Dividing by infinity', dividend: 20, divisor: Infinity, expected: 20 * Infinity, skip: true },
+  { id: 'TC-DIV-317', description: 'Dividing zero by infinity', dividend: 0, divisor: Infinity, expected: 0 * Infinity, skip: true },
   {
-    id: 'TC-MUL-318',
+    id: 'TC-DIV-318',
     description: 'Dividing Infinity by Infinity',
     dividend: Infinity,
     divisor: Infinity,
