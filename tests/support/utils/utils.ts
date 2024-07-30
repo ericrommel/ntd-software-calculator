@@ -41,8 +41,8 @@ export async function runCalculator(operation: string, ...args: any[]): Promise<
  * @param expectedResult - The expected numerical result.
  */
 export function expectResult(actualResult: string | number, expectedResult: string | number) {
-  if (expectedResult === Infinity) {
-    expect(actualResult).toMatch(/^(Result: )?(Infinity|∞)$/)
+  if (expectedResult === Infinity || expectedResult === -Infinity) {
+    expect(actualResult).toMatch(/^(Result: )?(Infinity|-Infinity|∞|-∞)$/)
   } else {
     expect(actualResult).toBe(`Result: ${expectedResult}`)
   }
