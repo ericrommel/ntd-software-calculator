@@ -1,100 +1,187 @@
+[![Playwright CI](https://github.com/ericrommel/ntd-software-calculator/actions/workflows/playwright.yml/badge.svg)](https://github.com/ericrommel/ntd-software-calculator/actions/)
+
+
 # NTD Software - SDET Coding Challenge
 
-## Description of the coding challenge
 
-### 1. Intro
-We have built a new, state-of-the-art calculator that's set to revolutionize the world of basic arithmetic operations. As part of the team that built it, your job is to build the right tools, tests, processes, and procedures to guarantee correctness. Your software developer peers tell you that it appears to be
-working OK for all intended purposes; there are even some unit tests providing coverage, so their confidence level is high. As a Software Developer Engineer in
-Testing, you think it’s great there’s unit test coverage but would like to perform other types of testing as well before releasing to the public.
+## Description of the coding challenge (project)
 
-### 2. Goals
-The goal is to use any means necessary to uncover any and all bugs.
+The full description of the coding challenge is [here](docs/project_description.md)
 
-### 3. Deliverables
-- [] A document with all findings, so that developers can replicate bugs in their own environment.
-- [] For each bug, provide hints into what might be happening that causes the bug.
-- [] If you use automation tools or custom code, provide the source code and instructions on how to run those.
-
-### 4. Instructions for the calculator
-The only requirement is to have Docker installed in your computer. It should work OK in macOS (apple silicon and intel) and Linux (x8664 and arm64). Windows is
-not supported.
-
-First pull the image: `docker pull public.ecr.aws/l4q9w4c5/loanpro-calculator-cli:latest`
-After pulling the image, execute it with: `docker run --rm public.ecr.aws/l4q9w4c5/loanpro-calculator-cli add 8 5`
-
-Available operations are:
-- add
-- subtract
-- multiply
-- divide
-
-### 5. Known bugs
-The following is a list of known bugs and/or issues that should not be included in the report.
-1. All commands take exactly two numbers. Attempting to use more or less operands will result in an error message; this is expected behavior.
-2. Dividing by zero returns an error message.
-3. Results may be displayed as scientific notation. This is correct and expected, as long as the value is correct. Results are guaranteed exact up to 8 decimal places. For example, adding 1.0000001 + 1.0000001 (six 0's) yields the expected 2.0000002, but 1.00000001 + 1.00000001 (seven 0’s) results in 2.0. Similar rounding errors due to the data type used are expected.
-5. Operations resulting in infinity, negative infinity or "not a number" are supported.
 
 ## Acceptance Criteria
-- [X] Come up with a test automation environment
+
+- [X] Come up with a test automation environment.
 - [X] Ensure that the tests cover the basic and edge cases for each functionality.
+- [X] Deliverables done.
+
 
 ## General settings
+
 - Install and set configuration if needed for:
   - [Node.js](https://nodejs.org/en/download/) (version used: v20.10.0)
-- Install dependencies
+  - [Docker](https://www.docker.com/products/docker-desktop/)
 
-  ```batch
-  npm install
+- Clone the repository on your local
+
+  ```bash
+  $ git clone git@github.com:ericrommel/ntd-software-calculator.git
+  ```
+
+- Inside de repository folder, install dependencies
+
+  ```bash
+  $ npm install
   ```
 
 ## Manual execution
-Run the tests:
+
+- Run all tests
   
-  ```batch
-  npm run test:e2e
+  ```bash
+  $ npm run test:e2e
   ```
 
+- Run a single test
+  ```bash
+  $ npm run test:e2e:single divide.spec.ts
+  ```
+
+
 ## Report
+
 After a test execution, you can see the report running the command below:
 
-  ```batch
+  ```bash
   npm run test:report
   ```
 
+
 ## CI/CD
-This project uses GitHub Actions as a sample CI in [GitHub](https://github.com/ericrommel/ntd-software-challenge/actions/workflows/playwright.yml)
+
+This project uses GitHub Actions as a sample CI on [GitHub](https://github.com/ericrommel/ntd-software-challenge/actions/workflows/playwright.yml)
 
 
-## Approach used
+## Approach Used
+
 
 ### TL;DR
-- Developed 6 test cases for the add computer functionality, spanning 2 scenarios
-- Discovered 5 issues during testing, documented in [here](docs/issues.md)
-- Utilized the Page Object Model (POM) to organize locators and functions, enhancing code reusability and maintainability
-- Two issues caused test failures, prompting the skipping of failing tests until resolution
-- Implemented workarounds for the remaining issues
+
+- Developed 165 test cases for the calculator functionality for addition, subtraction, multiplication, and division operations.
+- Discovered 33 issues during testing. The majority align with known issues. The issues were grouped and documented in [here](docs/issues.md).
+- Multiple issues caused test failures, prompting the skipping of 32 failing tests until resolution.
 - Test strategy, test plan, and test cases documents were created for reference and documentation purposes.
 
-### Explanation
-The task required the creation of test scenarios for the add computer functionality, resulting in the development of 6 test cases covering 2 distinct scenarios. During testing, 5 issues were identified and documented in the provided issue log. To structure the automation code effectively, the Page Object Model (POM) was employed, enabling the systematic organization of locators and functions into reusable components associated with specific pages, such as the List computers page and Add computers page. This approach promotes code reusability and facilitates maintenance.
 
-Two of the identified issues led to test failures, necessitating the temporary skipping of affected tests until the underlying problems are resolved. For the remaining issues, temporary workarounds were implemented to ensure test continuity. Once the identified issues are addressed and resolved, the affected tests can be revisited and rectified accordingly.
+### Explanation
+
+The task required the creation of test scenarios for various calculator functionalities, resulting in the development of 165 test cases covering addition ([47 test cases](docs/test-cases/addition.test.cases.md)), subtraction ([47 test cases](docs/test-cases/subtraction.test.cases.md)), multiplication ([35 test cases](docs/test-cases/multiplication.test.cases.md)), and division ([36 test cases](docs/test-cases/division.test.cases.md)) operations. During testing, 33 issues were identified and documented in the provided [issue log](docs/list-issues.md). A total of 11 issues were reported and documented [here](docs/issues.md).
+
+To structure the automation code effectively, the test cases were put in a list of objects for better parameterization. This approach promotes code reusability and facilitates maintenance.
+
+Several of the identified issues (32 test cases) led to test failures, necessitating the temporary skipping of affected tests until the underlying problems are resolved. Once the identified issues are addressed and resolved, the affected tests can be revisited and rectified accordingly.
 
 Additionally, as part of the testing process, comprehensive test strategy, test plan, and test cases documents were crafted to provide guidance and reference for the testing efforts. These documents serve as valuable resources for understanding the testing approach, outlining test scenarios, and documenting test cases for future use and collaboration.
 
+
+### Technologies Used
+
+
+#### Playwright/TypeScript
+Utilized for writing and executing automated tests. Playwright provides a reliable and fast framework for automation, and TypeScript adds type safety, making the codebase more maintainable.
+
+
+##### Justification for Using Playwright
+
+While Playwright is primarily designed for browser automation, I used it in this project due to its robust capabilities, flexibility, and my familiarity with the tool. Despite the SUT being a terminal app running in a container, Playwright offered several advantages that made it suitable for this particular automation task.
+
+
+##### Advantages of Using Playwright
+
+1. Comprehensive Automation Capabilities:
+   - Playwright supports automation beyond just web browsers, including interacting with the command line and performing various tasks programmatically.
+   - I utilized Playwright's ability to execute commands, capture outputs, and validate results, effectively testing the terminal-based calculator.
+
+2. Robust Framework:
+   - Playwright provides a reliable and modern API, making the test scripts clean, maintainable, and scalable.
+   - Its built-in support for capturing screenshots, handling asynchronous operations, and generating detailed test reports proved beneficial in this context.
+
+3. Integration and Scalability:
+   - Playwright integrates well with other tools and services we use, such as Docker, allowing us to containerize the application and ensure consistent test environments.
+   - The framework's scalability features facilitated parallel test execution, improving efficiency and reducing test run times.
+
+#### Considerations and Alternatives
+
+While Playwright was not specifically designed for terminal applications, its versatility and my proficiency with the tool justified its use in this project. However, I acknowledge that other tools like [Expect](https://nodejs.org/api/child_process.html#child_processexeccommand-options-callback) (a node.js module for automating terminal interactions) or custom shell scripts could also be viable alternatives for terminal automation.
+
+In the future, I may consider exploring specialized tools for terminal applications.
+
+
+#### Strategy Used Evaluation
+
+Pros:
+- Reusability: Parameterized test cases and modularized code promote reuse and reduce duplication.
+- Maintainability: Comprehensive documentation and structured codebase make maintenance easier.
+- Reliability: Automated tests provide consistent and repeatable test results.
+
+Cons:
+- Initial Setup Time: Requires significant initial investment to set up automation frameworks and containerization.
+- Skill Requirement: Requires team members to have skills in the specific technologies used (e.g., TypeScript, Docker).
+
+
+#### Improvements
+
+##### Execution Report Analysis
+
+During the testing process, it was observed that some test files took significantly longer to execute compared to others. The following execution times were recorded for the test files:
+
+  ```
+  Slow test file: [Desktop Chrome] › tests/e2e/subtract.spec.ts (54.4s)
+  Slow test file: [Desktop Chrome] › tests/e2e/add.spec.ts (50.2s)
+  Slow test file: [Desktop Chrome] › tests/e2e/multiply.spec.ts (41.3s)
+  Slow test file: [Desktop Chrome] › tests/e2e/divide.spec.ts (33.4s)
+  ```
+
+
+##### Suggested Improvement
+
+To improve the efficiency and speed of the test execution, it is recommended to split the slow test files into smaller test files. This will enable better parallel execution of tests, reducing the overall time required for the test suite to run. Key Benefits of Splitting Tests:
+- Improved Readability: Each test file has a clear purpose and is easier to read and understand.
+- Better Maintainability: Changes to specific categories of tests are easier to manage.
+- Focused Debugging: Isolating tests makes it easier to identify and fix issues within a specific category.
+- Scalability: Adding new tests is straightforward and doesn't clutter a single test file.
+
+This distribution method ensures your test suite remains organized, readable, and easy to maintain.
+
+
+##### Steps for Improvement
+
+1. Analyze Test Cases:
+   - Review the existing test cases within the slow test files to identify logical groupings that can be separated into smaller files.
+
+2. Refactor Test Files:
+   - Split the identified test cases into new test files, ensuring that each file contains a balanced number of test cases to optimize execution time.
+
+3. Update Test Suite Configuration:
+   - Modify the test suite configuration to include the newly created test files, maintaining proper test execution order and dependencies.
+
+4. Monitor and Adjust:
+   - Monitor the execution times of the refactored test files to ensure the desired improvement in performance is achieved. Adjust the distribution of test cases as necessary to maintain optimal execution speed.
+
+
 ### Documents
-Check out the the documents below to learn more about the tests:
+
+Check out the documents below to learn more about the tests:
 
 - [Test Strategy document](docs/test-strategy.md)
 - [Test Plan document](docs/test-plan.md)
 - Test Case documents:
-  1. [Test Case: Verify Alert Message for Successful Addition](docs/test-cases/T001.md)
-  2. [Test Case: Verify that the new computer is saved in the database and reflected in the list of computers.](docs/test-cases/T002.md)
-  3. [Test Case: Verify Error Message for Missing Name Field](docs/test-cases/T003.md)
-  4. [Test Case: Verify Error Message for Invalid Introduced Date](docs/test-cases/T004.md)
-  5. [Test Case: Verify Handling of Discontinued Date Before Introduced Date](docs/test-cases/T005.md)
-  6. [Test Case: Verify Maximum Character Limit for Name Field](docs/test-cases/T006.md)
+  1. [Addition Test Cases](docs/test-cases/addition.test.cases.md)
+  2. [Subtraction Test Cases](docs/test-cases/subtraction.test.cases.md)
+  3. [Multiplication Test Cases](docs/test-cases/multiplication.test.cases.md)
+  4. [Division Test Cases](docs/test-cases/division.test.cases.md)
 
-### Summary of findings
-Findings are in this [document](docs/issues.md).
+
+### Summary of Findings
+
+Findings are documented [here](docs/issues.md).

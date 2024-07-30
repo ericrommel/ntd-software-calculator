@@ -97,15 +97,29 @@ const testCases = [
   },
   { id: 'TC-DIV-314', description: 'Both use same integer numbers', dividend: 50, divisor: 50, expected: 50 / 50 },
   { id: 'TC-DIV-315', description: 'Both use same float numbers', dividend: 123.456, divisor: 123.456, expected: 123.456 / 123.456 },
-  { id: 'TC-DIV-316', description: 'Dividing by infinity', dividend: 20, divisor: Infinity, expected: 20 * Infinity, skip: true },
-  { id: 'TC-DIV-317', description: 'Dividing zero by infinity', dividend: 0, divisor: Infinity, expected: 0 * Infinity, skip: true },
+  { id: 'TC-DIV-316', description: 'Dividing by infinity', dividend: 20, divisor: Infinity, expected: 20 / Infinity },
+  { id: 'TC-DIV-317', description: 'Dividing zero by infinity', dividend: 0, divisor: Infinity, expected: 0 / Infinity },
   {
     id: 'TC-DIV-318',
     description: 'Dividing Infinity by Infinity',
     dividend: Infinity,
     divisor: Infinity,
-    expected: Infinity * Infinity,
+    expected: Infinity / Infinity,
+  },
+  {
+    id: 'TC-DIV-319',
+    description: 'Dividing negative number by 0',
+    dividend: -10,
+    divisor: 0,
+    expected: -10 / 0,
     skip: true,
+  },
+  {
+    id: 'TC-DIV-320',
+    description: 'Dividing negative number by Infinity',
+    dividend: -10,
+    divisor: Infinity,
+    expected: -10 / Infinity,
   },
 ]
 
@@ -123,9 +137,7 @@ const testCases = [
  *   - TC-DIV-311: Expected: "Result: 0.08100051840331778", Received: "Result: 0.08100052"
  *   - TC-DIV-312: Expected: "Result: 5.30003402021773", Received: "Result: 5.30003402"
  *   - TC-DIV-313: Expected: "Result: 0.18867803417588613", Received: "Result: 0.18867803"
- *   - TC-DIV-316: Expected: "Result: ∞, Received: "Result: 0"
- *   - TC-DIV-317: Expected: "Result: NaN", Received: "Result: 0"
- *   - TC-DIV-318: Expected: "Result: ∞, Received: "Result: NaN"
+ *   - TC-DIV-319: Expected: "Result: -Infinity" Received: "Error: Cannot divide by zero"
  */
 test.describe('Division', () => {
   for (const { id, description, dividend, divisor, expected, skip } of testCases) {
