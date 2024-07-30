@@ -6,7 +6,7 @@
 
 ## Description of the coding challenge (project)
 
-The full description of the coding challenge is [here](docs/project_description.md)
+The full description of the coding challenge is [here](docs/project-description.md)
 
 
 ## Acceptance Criteria
@@ -59,7 +59,7 @@ After a test execution, you can see the report running the command below:
 
 ## CI/CD
 
-This project uses GitHub Actions as a sample CI on [GitHub](https://github.com/ericrommel/ntd-software-challenge/actions/workflows/playwright.yml)
+This project uses GitHub Actions as a sample CI on [GitHub](https://github.com/ericrommel/ntd-software-calculator/actions)
 
 
 ## Approach Used
@@ -68,7 +68,7 @@ This project uses GitHub Actions as a sample CI on [GitHub](https://github.com/e
 ### TL;DR
 
 - Developed 165 test cases for the calculator functionality for addition, subtraction, multiplication, and division operations.
-- Discovered 33 issues during testing. The majority align with known issues. The issues were grouped and documented in [here](docs/issues.md).
+- Discovered 33 issues during testing. The majority align with known issues. The issues were grouped in 11 issues and documented in [here](docs/issues.md).
 - Multiple issues caused test failures, prompting the skipping of 32 failing tests until resolution.
 - Test strategy, test plan, and test cases documents were created for reference and documentation purposes.
 
